@@ -1,8 +1,12 @@
 version: '3.5'
 services:
-  api1: # API - Instância 01
+  api1: &api 
     build: .
     container_name: rinha-api1
+    hostname: rinha-api1
+    restart: always
+    environment:
+      DB_URL: "postgres://postgres:postgres@rinha-db:5432/rinhadb"
     depends_on:
       - db
     expose:
@@ -10,25 +14,18 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.25'
-          memory: '0.25GB'
+          cpus: '0.4'
+          memory: '0.8GB'
 
-  api2: # API - Instância 01
-    build: .
+  api2: 
+    <<: *api
     container_name: rinha-api2
-    depends_on:
-      - db
-    expose:
-      - "3000"
-    deploy:
-      resources:
-        limits:
-          cpus: '0.25'
-          memory: '0.25GB'
+    hostname: rinha-api2
 
   nginx:
     container_name: rinha-nginx
     image: nginx:alpine
+    restart: always
     depends_on:
       - api1
       - api2
@@ -39,13 +36,15 @@ services:
     deploy:
       resources:
           limits:
-              cpus: '0.15'
-              memory: '0.2GB'
+              cpus: '0.10'
+              memory: '0.1GB'
 
   db: # Banco de dados
     image: postgres
     container_name: rinha-db
     hostname: rinha-db
+    restart: always
+    command: postgres -c 'max_connections=450' -c 'log_error_verbosity=terse'
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
@@ -57,10 +56,11 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.75'
-          memory: '0.25GB'
+          cpus: '0.6'
+          memory: '1.3GB'
     volumes:
       - pg_data:/var/lib/postgresql/data
+      - ./db.sql:/docker-entrypoint-initdb.d/db.sql
 volumes:
   pg_data:
     driver: local
