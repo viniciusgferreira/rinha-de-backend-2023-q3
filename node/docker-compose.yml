@@ -6,11 +6,10 @@ services:
     hostname: rinha-api1
     restart: always
     environment:
-      DB_URL: "postgres://postgres:postgres@rinha-db:5432/rinhadb"
+      APP_PORT: 3000
     depends_on:
       - db
-    expose:
-      - "3000"
+    network_mode: host
     deploy:
       resources:
         limits:
@@ -21,16 +20,17 @@ services:
     <<: *api
     container_name: rinha-api2
     hostname: rinha-api2
+    environment:
+      APP_PORT: 3001
 
   nginx:
     container_name: rinha-nginx
     image: nginx:alpine
     restart: always
+    network_mode: host
     depends_on:
       - api1
       - api2
-    ports:
-        - "9999:9999"
     volumes:
         - ./nginx.conf:/etc/nginx/nginx.conf
     deploy:
@@ -44,15 +44,12 @@ services:
     container_name: rinha-db
     hostname: rinha-db
     restart: always
-    command: postgres -c 'max_connections=450' -c 'log_error_verbosity=terse'
+    network_mode: host
+    command: postgres -c 'max_connections=450' -c 'log_error_verbosity=terse' -c 'effective_cache_size=512MB' -c 'shared_buffers=512MB'
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
       POSTGRES_DB: rinhadb
-    ports:
-      - "5432:5432"
-    expose:
-      - "5432"
     deploy:
       resources:
         limits:
@@ -64,7 +61,3 @@ services:
 volumes:
   pg_data:
     driver: local
-networks:
-  default:
-    driver: bridge
-    name: rinha

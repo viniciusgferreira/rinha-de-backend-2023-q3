@@ -4,14 +4,20 @@ import { router } from './middleware.js';
 import { countPeople } from './api.js';
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.APP_PORT | 3000;
+
 
 app.use(express.json());
 app.use('/pessoas', router);
 app.use('/contagem-pessoas', countPeople);
 
+//DB
+
 export const pool = new pg.Pool({
-    connectionString: process.env.DB_URL,
+    host: 'localhost',
+    user: 'postgres',
+    password: 'postgres',
+    database: 'rinhadb',
     max: 40,
     idleTimeoutMillis: 0,
     connectionTimeoutMillis: 60000,
