@@ -1,0 +1,12 @@
+/home/vinicius/personal/repos/rinha-de-backend-2023-q3-viniciusferreira/java/src/main/java/com/vinicius/rinhabackend/services/PessoaService.java
+/home/vinicius/personal/repos/rinha-de-backend-2023-q3-viniciusferreira/java/src/main/java/com/vinicius/rinhabackend/repositories/PessoaRepository.java
+/home/vinicius/personal/repos/rinha-de-backend-2023-q3-viniciusferreira/java/src/main/java/com/vinicius/rinhabackend/exceptions/CustomValidationException.java
+/home/vinicius/personal/repos/rinha-de-backend-2023-q3-viniciusferreira/java/src/main/java/com/vinicius/rinhabackend/exceptions/ResourceExceptionHandler.java
+/home/vinicius/personal/repos/rinha-de-backend-2023-q3-viniciusferreira/java/src/main/java/com/vinicius/rinhabackend/controllers/ContagemPessoasController.java
+/home/vinicius/personal/repos/rinha-de-backend-2023-q3-viniciusferreira/java/src/main/java/com/vinicius/rinhabackend/exceptions/CustomEmptyException.java
+/home/vinicius/personal/repos/rinha-de-backend-2023-q3-viniciusferreira/java/src/main/java/com/vinicius/rinhabackend/exceptions/ResourceAlreadyExists.java
+/home/vinicius/personal/repos/rinha-de-backend-2023-q3-viniciusferreira/java/src/main/java/com/vinicius/rinhabackend/controllers/PessoaController.java
+/home/vinicius/personal/repos/rinha-de-backend-2023-q3-viniciusferreira/java/src/main/java/com/vinicius/rinhabackend/dtos/PessoaInsertDTO.java
+/home/vinicius/personal/repos/rinha-de-backend-2023-q3-viniciusferreira/java/src/main/java/com/vinicius/rinhabackend/RinhaBackendApplication.java
+/home/vinicius/personal/repos/rinha-de-backend-2023-q3-viniciusferreira/java/src/main/java/com/vinicius/rinhabackend/exceptions/ResourceNotFoundException.java
+/home/vinicius/personal/repos/rinha-de-backend-2023-q3-viniciusferreira/java/src/main/java/com/vinicius/rinhabackend/entities/Pessoa.java

@@ -1,0 +1,12 @@
+com/vinicius/rinhabackend/controllers/PessoaController.class
+com/vinicius/rinhabackend/repositories/PessoaRepository.class
+com/vinicius/rinhabackend/exceptions/ResourceExceptionHandler.class
+com/vinicius/rinhabackend/dtos/PessoaInsertDTO.class
+com/vinicius/rinhabackend/exceptions/ResourceNotFoundException.class
+com/vinicius/rinhabackend/exceptions/CustomEmptyException.class
+com/vinicius/rinhabackend/entities/Pessoa.class
+com/vinicius/rinhabackend/exceptions/CustomValidationException.class
+com/vinicius/rinhabackend/RinhaBackendApplication.class
+com/vinicius/rinhabackend/exceptions/ResourceAlreadyExists.class
+com/vinicius/rinhabackend/services/PessoaService.class
+com/vinicius/rinhabackend/controllers/ContagemPessoasController.class
